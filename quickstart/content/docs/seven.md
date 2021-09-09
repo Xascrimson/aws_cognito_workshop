@@ -5,7 +5,7 @@ draft: false
 ---
 https://aws.amazon.com/getting-started/projects/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-2/
 
-Time to setup our landing page if user does not have the necessary permission. 
+Time to set up our landing page if a user does not have the necessary permission. 
 
 Go to Cognito service, and click on "manage user pools". On the top right click on "Create a user pool".
 
@@ -22,9 +22,9 @@ Click Review Default. Leave everything as is, we are just going to change App Cl
 From the Pool Details page for your user pool, select App clients from the left General Settings section in the navigation bar.
 
 1. Tick "Select all" checkbox.
-2. CallBack URL will be our Cloudfront url.
+2. CallBack URL will be our Cloudfront URL.
 3. Under "Allowed OAuth Flows", tick "implicit grant"
-4. Allowed Oauth Scopes, you can tick all 
+4. Allowed OAuth Scopes, you can tick all 
 
 ![](/cognito.png)
 
@@ -32,7 +32,7 @@ Now you see how there is a "Hosted UI", This may or may not be enabled for you, 
 
 Click "choose domain name".
 
-In this section, we will set up our cognito domain name that we are routing to if users are unauthenticated/get tokens. Make any name you desire but it needs to be unique, you can't use the word "cognito". And save changes.
+In this section, we will set up our Cognito domain name that we are routing to if users are unauthenticated/get tokens. Make any name you desire but it needs to be unique, you can't use the word "Cognito". And save changes.
 
 ![](/domainName.png)
 
@@ -60,28 +60,28 @@ Jumping back to our React App. In "App.js" paste the following just below the Ap
 	    idtoken2,
 	    idtoken3 = getToken();
 
-Ignoring id tokens for now, we can see that if the try block fails, we are redirected to our Cognito website. Sounds famililar?
+Ignoring id tokens for now, we can see that if the try block fails, we are redirected to our Cognito website. Sounds familiar?
 
-We can infer id Token has to do with something with the authentication token and thats correct. 
+We can infer id Token has to do with something with the authentication token and that's correct. 
 
-Now Lets build and deploy these changes, run the following again to deploy to s3.
+Now let's build and deploy these changes, run the following again to deploy to s3.
 
 	yarn build
 	yarn deploy
 
-Hopefully,the cognito url is deployed. Lets go to the Cognito URL we had earlier and hopefully you should see this page.
+Hopefully,the Cognito URL is deployed. Let's go to the Cognito URL we had earlier and hopefully, you should see this page.
 
 ![](/redirectpage.png)
 
 Sign up for now, and you should receive a verification email. Verify yourself, and you should now be redirected to your app.
 
-Cool, lets access this using the S3 static url. You should be automatically redirected to the sign-on page.
+Cool, let's access this using the S3 static URL. You should be automatically redirected to the sign-on page.
 
-Cool, lets access this via Cloudfront URL. Wait why isnt it working? It works via the S3 static url, but not Cloudfront?...
+Cool, let's access this via Cloudfront URL. Wait why isn't it working? It works via the S3 static URL, but not Cloudfront?...
 
 https://stackoverflow.com/questions/30154461/aws-cloudfront-not-updating-on-update-of-files-in-s3
 
-To fix this, all we have to do is go to Cloudfront service, to our distribution, under 'invalidations' tab create a new invalidation. Add "/*" to object path and create invalidation.
+To fix this, all we have to do is go to Cloudfront service, to our distribution, under 'invalidations' tab create a new invalidation. Add "/*" to the object path and create invalidation.
 
  Now we test our Cloudfront and it works!
 

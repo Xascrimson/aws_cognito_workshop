@@ -5,9 +5,9 @@ draft: false
 ---
 https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html
 
-Referencing back to our id token from previous section. If you've successfully logged in you may notice something on the URL string. 
+Referencing back to our id token from the previous section. If you've successfully logged in you may notice something on the URL string. 
 
-An example url: we see that it contains the following:
+An example URL: we see that it contains the following:
 1. "id_token"
 2. "access_token"
 
@@ -20,7 +20,7 @@ Now we need to find our private JWT token such that we can verify if this challe
 To find it, go to https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/jwks.json
 
 1. where userPoolId is from your Cognito pool that you've created.
-2. Region is where your cognito service is deployed(for our usage is ap-southeast.2)
+2. Region is where your Cognito service is deployed(for our usage is ap-southeast.2)
 
 ![](/poolid.png)
 
@@ -28,6 +28,6 @@ You should find a page looking like this:
 
 ![](/jwt.png)
 
-We wont go through how to validate, but the jist is to use a JWT decoder such as "jwt-decode" package, and parse in the challenge JWT token details that you've received against this. Is relatively simples. 
+We won't go through how to validate, but the gist is to use a JWT decoder such as "jwt-decode" package and parse in the challenge JWT token details that you've received against this. Is relatively simples. 
 
 Hope this was informative and hope you've enjoyed this security workshop :) 

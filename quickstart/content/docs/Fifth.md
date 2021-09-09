@@ -6,7 +6,7 @@ draft: false
 
 Here comes the fun part. 
 
-Lets first create a S3 bucket to store our app. 
+Let's first create an S3 bucket to store our app. 
 
 In the AWS console, search S3, then click on Create Bucket. 
 
@@ -38,7 +38,7 @@ Click on the bucket, navigate to the permissions tab, edit bucket policy and pas
 	    ]
 	}
 
-Under Properties tab, at the bottom of the page find "Static Website Hosting". Click edit, edit the following, and save changes:
+Under the Properties tab, at the bottom of the page find "Static Website Hosting". Click edit, edit the following, and save changes:
 
 1. Static website hosting = enable
 2. Hosting type = Host a static website
@@ -46,7 +46,7 @@ Under Properties tab, at the bottom of the page find "Static Website Hosting". C
 
 ![](/S3static.png)
 
-The reason why we use index.html is because when we build our react app, the page generated that we see is the index.html file. 
+The reason why we use index.html is that when we build our react app, the page generated we see is the index.html file. 
 
 
 Now we go back to our react app and navigate to 'src/package.json' and paste the following under 'scripts'.
@@ -57,7 +57,7 @@ Now we go back to our react app and navigate to 'src/package.json' and paste the
 
 What this will do is it will deploy our build to s3 automatically when we run "yarn deploy".
 
-Now in our CLI(powershell/cmd/terminal). Run "yarn build" to build the app.
+Now in our CLI(PowerShell/cmd/terminal). Run "yarn build" to build the app.
 
 	yarn build 
 
@@ -70,6 +70,6 @@ If all goes well, going back to your bucket created you should see files populat
 
 ![](/S3files.png)
 
-Going back to the "static website hosting " section as per above, You should see an bucket url endpoint there. Click on that and you should see your website now!
+Going back to the "static website hosting " section as per above, You should see a bucket URL endpoint there. Click on that and you should see your website now!
 
 ![](/S3url.png)
